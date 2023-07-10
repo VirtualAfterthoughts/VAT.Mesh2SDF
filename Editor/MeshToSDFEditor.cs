@@ -84,15 +84,17 @@ public class MeshToSDFEditor : Editor
     {
         MeshToSDF meshToSDF = target as MeshToSDF;
         Mesh mesh = null;
-        SkinnedMeshRenderer smr = meshToSDF.GetComponent<SkinnedMeshRenderer>();
+        SkinnedMeshRenderer smr = meshToSDF.GetComponentInParent<SkinnedMeshRenderer>();
         if (smr != null)
             mesh = smr.sharedMesh;
+
         if (mesh == null)
         {
-            MeshFilter mf = meshToSDF.GetComponent<MeshFilter>();
+            MeshFilter mf = meshToSDF.GetComponentInParent<MeshFilter>();
             if (mf != null)
                 mesh = mf.sharedMesh;
         }
+
         if (mesh == null)
         {
             EditorGUILayout.HelpBox("MeshToSDF needs a Mesh from either a SkinnedMeshRenderer or a MeshFilter component on this GameObject.", MessageType.Error);

@@ -158,8 +158,8 @@ If you need signed distance or just need a limited shell around your surface, us
         m_JumpFloodFinalize = m_Compute.FindKernel(Labels.JumpFloodFinalize);
         m_BufferToTextureCalcGradient = m_Compute.FindKernel(Labels.BufferToTexture);
 
-        m_SkinnedMeshRenderer = GetComponent<SkinnedMeshRenderer>();
-        m_MeshFilter = GetComponent<MeshFilter>();
+        m_SkinnedMeshRenderer = GetComponentInParent<SkinnedMeshRenderer>();
+        m_MeshFilter = GetComponentInParent<MeshFilter>();
     }
 
     public void UpdateSDF(CommandBuffer cmd)
